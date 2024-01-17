@@ -11,13 +11,15 @@ const rl = readline.createInterface({
 
 readline.emitKeypressEvents(process.stdin);
 
-console.log('Enter text to write to file, or "exit" or "ctrl + c" to exit:');
+console.log(
+  'Hello, enter text to write to file, or "exit" or "ctrl + c" to exit:',
+);
 
 if (process.stdin.isTTY) process.stdin.setRawMode(true);
 
 process.stdin.on('keypress', (str, key) => {
   if (key.ctrl && key.name === 'c') {
-    console.log('\nGoodbye!');
+    console.log('\nGood job! Have a good day!');
     writeStream.end();
     process.exit(0);
   }
@@ -25,7 +27,7 @@ process.stdin.on('keypress', (str, key) => {
 
 rl.on('line', (input) => {
   if (input.toLowerCase() === 'exit') {
-    console.log('Goodbye!');
+    console.log('Good job! Have a good day!');
     writeStream.end();
     process.exit(0);
   } else {
